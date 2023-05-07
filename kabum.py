@@ -19,7 +19,7 @@ class KabumBot():
         op.add_argument('--disable-dev-shm-usage')
         op.add_argument("user-agent=Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/87.0.4280.88 Safari/537.36")
         #service = Service(ChromeDriverManager().install())
-        op.binary_location("GOOGLE_CHROME_BIN")
+        op.binary_location(os.environ.get("GOOGLE_CHROME_BIN"))
         self.browser = webdriver.Chrome(executable_path=os.environ.get("CHROMEDRIVER_PATH"), options=op)
     
     def login(self, email, password):
