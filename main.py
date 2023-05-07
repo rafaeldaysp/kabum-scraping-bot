@@ -61,7 +61,6 @@ def main():
 if __name__ == '__main__':
     currentDateTime = datetime.now()
     currentHour = currentDateTime.strftime('%H')
-    print(currentHour)
     while currentHour != '06':
         print(f'A hora atual é de {currentHour}h. O script encerrará a partir das 3h da manhã e voltará às 5h.')
         start_time = time.time()
