@@ -3,6 +3,7 @@ import api
 import time
 from dotenv import load_dotenv
 import os
+from datetime import datetime
 
 load_dotenv()
 
@@ -58,8 +59,16 @@ def main():
         bot.login(EMAIL, PASSWORD)
 
 if __name__ == '__main__':
-    start_time = time.time()
-    main()
-    print(time.time() - start_time)
+    currentDateTime = datetime.now()
+    currentHour = currentDateTime.strftime('%H')
+    print(currentHour)
+    while currentHour != '06':
+        print(f'A hora atual é de {currentHour}h. O script encerrará a partir das 3h da manhã e voltará às 5h.')
+        start_time = time.time()
+        main()
+        print(f'Fim da rodada. O tempo de execução foi de {time.time() - start_time} segundos.')
+        currentDateTime = datetime.now()
+        currentHour = currentDateTime.strftime('%H')
+    
 
 
