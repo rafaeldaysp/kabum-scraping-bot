@@ -24,11 +24,10 @@ def discountAbsoluteAmount(discount, price):
     return discountAmount
 
 def main():
-    bot = KabumBot()
-    bot.login(EMAIL, PASSWORD)
     coupons = api.get_coupons(bot.retailer_id)
     products = api.get_retailer_products(bot.retailer_id)
     for product in products:
+        bot = KabumBot()
         print('produto: ', product['title'], product['html_url'])
         data = {}
         try:
@@ -55,8 +54,6 @@ def main():
             api.update_product_retailers(product['id'], bot.retailer_id, data).content
         print(data)
         bot.closeBrowser()
-        bot = KabumBot()
-        bot.login(EMAIL, PASSWORD)
 
 if __name__ == '__main__':
     currentDateTime = datetime.now()
